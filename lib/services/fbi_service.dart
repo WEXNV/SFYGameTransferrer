@@ -122,7 +122,7 @@ class FBIService {
     onLog('Request for: $decodedPath');
 
     final fileItem = _files.firstWhere(
-      (f) => !f.isExternalUrl && f.clientPath == '/$decodedPath',
+      (f) => !f.isExternalUrl && f.clientPath == '/${request.url.path}',
       orElse: () => FileItem(path: '', fileName: '', size: 0),
     );
 
