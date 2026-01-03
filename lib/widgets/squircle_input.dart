@@ -23,9 +23,10 @@ class SquircleInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 40,
       decoration: BoxDecoration(
         color: enabled ? Colors.white : Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.grey.shade300, width: 1),
         boxShadow: [
           BoxShadow(

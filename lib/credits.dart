@@ -271,7 +271,7 @@ class CreditsPage extends StatelessWidget {
 
                     // CTA button
                     CenteredButton(
-                      text: 'Try Shadowfly VPN',
+                      text: 'Try Shadowfly',
                       isPrimary: true,
                       isLarge: true,
                       onTap: _launchURL,
