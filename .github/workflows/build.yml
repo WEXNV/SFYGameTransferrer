@@ -10,6 +10,9 @@ on:
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build-type: [apk, appbundle]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -19,6 +22,11 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          gradle-home-cache-cleanup: true
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -33,23 +41,20 @@ jobs:
         run: flutter analyze
         continue-on-error: true
 
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Build ${{ matrix.build-type }}
+        run: |
+          if [ "${{ matrix.build-type }}" = "apk" ]; then
+            flutter build apk --release
+          else
+            flutter build appbundle --release
+          fi
 
-      - name: Build App Bundle
-        run: flutter build appbundle --release
-
-      - name: Upload APK artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: android-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-
-      - name: Upload App Bundle artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: android-appbundle
-          path: build/app/outputs/bundle/release/app-release.aab
+          name: android-${{ matrix.build-type }}
+          path: |
+            ${{ matrix.build-type == 'apk' && 'build/app/outputs/flutter-apk/app-release.apk' || 'build/app/outputs/bundle/release/app-release.aab' }}
 
   build-macos:
     runs-on: macos-latest
