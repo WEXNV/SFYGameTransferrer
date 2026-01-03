@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.n3ds" "\0"
-            VALUE "FileDescription", "fbi_file_transfer" "\0"
+            VALUE "CompanyName", "net.sfy" "\0"
+            VALUE "FileDescription", "SFY Game Transferrer" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "fbi_file_transfer" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.n3ds. All rights reserved." "\0"
-            VALUE "OriginalFilename", "fbi_file_transfer.exe" "\0"
-            VALUE "ProductName", "fbi_file_transfer" "\0"
+            VALUE "InternalName", "SFYGameTransferrer" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 net.sfy. All rights reserved." "\0"
+            VALUE "OriginalFilename", "SFYGameTransferrer.exe" "\0"
+            VALUE "ProductName", "SFY Game Transferrer" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
