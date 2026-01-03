@@ -210,7 +210,7 @@ class _FBITransferPageState extends State<FBITransferPage> {
               border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   offset: const Offset(0, 2),
                   blurRadius: 4,
                 ),
@@ -275,6 +275,7 @@ class _FBITransferPageState extends State<FBITransferPage> {
         data: Theme.of(context).copyWith(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
         ),
         child: BottomNavigationBar(
           currentIndex: _currentTabIndex,
@@ -421,7 +422,7 @@ class _FBITransferPageState extends State<FBITransferPage> {
                           border: Border.all(color: Colors.grey.shade200),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.03),
+                              color: Colors.black.withValues(alpha: 0.03),
                               offset: const Offset(0, 1),
                               blurRadius: 3,
                             ),
@@ -601,7 +602,7 @@ class _FBITransferPageState extends State<FBITransferPage> {
                             border: Border.all(color: Colors.grey.shade200),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.03),
+                                color: Colors.black.withValues(alpha: 0.03),
                                 offset: const Offset(0, 1),
                                 blurRadius: 3,
                               ),
@@ -694,6 +695,7 @@ class _FBITransferPageState extends State<FBITransferPage> {
             onTap: _isTransferring ? null : _sendFiles,
             isBlock: true,
             disabled: _isTransferring,
+            icon: TDIcons.upload,
           ),
           const SizedBox(height: 16),
           TDText(

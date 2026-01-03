@@ -108,7 +108,9 @@ class ConsoleManager {
         addConsole(ip, 5000);
         return true;
       }
-    } catch (e) {}
+    } catch (e) {
+      // Ignore network errors when checking hostname
+    }
     return false;
   }
 
