@@ -10,6 +10,14 @@ A Flutter app for transferring CIA and TIK files to Nintendo 3DS consoles using 
 - **Real-time Transfer Log** - Monitor the transfer process
 - **File Management** - Add, view, and remove files before transfer
 
+## Screenshots
+
+### Consoles Tab
+![Consoles Tab](docs/photos/consoles_tab.PNG)
+
+### Files Tab  
+![Files Tab](docs/photos/files_tab.PNG)
+
 ## Requirements
 
 1. Nintendo 3DS with FBI installed
