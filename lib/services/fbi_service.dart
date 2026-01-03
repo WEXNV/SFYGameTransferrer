@@ -370,25 +370,38 @@ class FBIService {
 
   Future<void> stopServer() async {
     debugPrint('FBIService: stopServer called');
+
     _progressUpdateTimer?.cancel();
     _progressUpdateTimer = null;
-    debugPrint('FBIService: Stopping notification service');
-    await _notificationService.stopForegroundService();
 
-    await WakelockPlus.disable();
-    debugPrint('FBIService: Wake lock disabled');
     debugPrint(
       'FBIService: Closing HTTP server (server is ${_httpServer != null ? "not null" : "null"})',
     );
 
-    // Force close the server and all active connections
-    await _httpServer?.close(force: true);
-    _httpServer = null;
+    try {
+      await _httpServer?.close(force: true);
+      _httpServer = null;
+      _downloadProgress.clear();
+      debugPrint('FBIService: HTTP server closed');
+    } catch (e) {
+      debugPrint('FBIService: Error closing HTTP server: $e');
+      _httpServer = null;
+    }
 
-    // Clear download progress to stop tracking
-    _downloadProgress.clear();
+    try {
+      await WakelockPlus.disable();
+      debugPrint('FBIService: Wake lock disabled');
+    } catch (e) {
+      debugPrint('FBIService: Error disabling wakelock: $e');
+    }
 
-    debugPrint('FBIService: Server stopped, calling onLog');
+    try {
+      await _notificationService.stopForegroundService();
+      debugPrint('FBIService: Notification service stopped');
+    } catch (e) {
+      debugPrint('FBIService: Error stopping notification service: $e');
+    }
+
     onLog('HTTP Server stopped');
     debugPrint('FBIService: stopServer completed');
   }
