@@ -6,6 +6,7 @@ import 'services/console_manager.dart';
 import 'widgets/squircle_input.dart';
 import 'widgets/centered_button.dart';
 import 'widgets/download_progress_dialog.dart';
+import 'widgets/custom_app_bar.dart';
 import 'credits.dart';
 
 void main() {
@@ -203,75 +204,39 @@ class _FBITransferPageState extends State<FBITransferPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  offset: const Offset(0, 2),
-                  blurRadius: 4,
-                ),
-              ],
-            ),
-            child: SafeArea(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 12,
-                ),
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.videogame_asset,
-                      color: Colors.black,
-                      size: 24,
-                    ),
-                    const SizedBox(width: 12),
-                    TDText(
-                      'SFY Game Transferrer',
-                      font: TDTheme.of(context).fontTitleLarge,
-                      textColor: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    const Spacer(),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const CreditsPage(),
-                            ),
-                          );
-                        },
-                        borderRadius: BorderRadius.circular(8),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Icon(
-                            Icons.favorite,
-                            color: Colors.red.shade400,
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+      appBar: CustomAppBar(
+        title: 'SFY Game Transferrer',
+        automaticallyImplyLeading: false,
+        leading: const Icon(
+          Icons.videogame_asset,
+          color: Colors.black,
+          size: 24,
+        ),
+        actions: [
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const CreditsPage()),
+                );
+              },
+              borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Icon(
+                  Icons.favorite,
+                  color: Colors.red.shade400,
+                  size: 24,
                 ),
               ),
             ),
           ),
-          Expanded(
-            child: IndexedStack(
-              index: _currentTabIndex,
-              children: [_buildConsolesTab(), _buildFilesTab()],
-            ),
-          ),
         ],
+      ),
+      body: IndexedStack(
+        index: _currentTabIndex,
+        children: [_buildConsolesTab(), _buildFilesTab()],
       ),
       bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(
