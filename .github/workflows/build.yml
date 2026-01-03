@@ -27,7 +27,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-home-cache-cleanup: true
-          cache-write-always: true
+          cache-write-only: false
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
