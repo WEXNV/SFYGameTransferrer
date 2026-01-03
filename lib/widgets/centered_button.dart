@@ -25,17 +25,17 @@ class CenteredButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bgColor =
-        this.backgroundColor ??
+        backgroundColor ??
         (disabled
             ? Colors.grey.shade300
             : (isPrimary ? const Color(0xFF0052D9) : Colors.white));
     final textColor = disabled
         ? Colors.grey.shade600
-        : (this.backgroundColor != null
+        : (backgroundColor != null
               ? Colors.white
               : (isPrimary ? Colors.white : Colors.black87));
     final borderColor =
-        this.backgroundColor ??
+        backgroundColor ??
         (isPrimary ? const Color(0xFF0052D9) : Colors.grey.shade300);
 
     return SizedBox(

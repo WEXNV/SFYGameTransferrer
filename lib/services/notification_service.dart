@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationService {
@@ -176,7 +177,9 @@ class NotificationService {
         body,
         notificationDetails,
       );
-    } catch (e) {}
+    } catch (e) {
+      debugPrint('Error showing notification: $e');
+    }
   }
 
   Future<void> stopForegroundService() async {
