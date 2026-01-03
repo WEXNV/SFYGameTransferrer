@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'services/fbi_service.dart';
 import 'services/console_manager.dart';
 import 'widgets/squircle_input.dart';
+import 'credits.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '3DS FBI File Transfer',
+      title: 'SFYGameTransferrer',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
@@ -230,10 +231,32 @@ class _FBITransferPageState extends State<FBITransferPage> {
                     ),
                     const SizedBox(width: 12),
                     TDText(
-                      '3DS FBI File Transfer',
+                      'SFY Game Transferrer',
                       font: TDTheme.of(context).fontTitleLarge,
                       textColor: Colors.black,
                       fontWeight: FontWeight.w600,
+                    ),
+                    const Spacer(),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const CreditsPage(),
+                            ),
+                          );
+                        },
+                        borderRadius: BorderRadius.circular(8),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.red.shade400,
+                            size: 24,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

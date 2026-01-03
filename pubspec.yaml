@@ -1,5 +1,5 @@
-name: fbi_file_transfer
-description: "A new Flutter project."
+name: sfy_game_transferrer
+description: "SFY Game Transferrer - Move CIA files to 3DS via FBI"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -37,6 +37,7 @@ dependencies:
   shelf: ^1.4.2
   network_info_plus: ^6.0.2
   path_provider: ^2.1.5
+  url_launcher: ^6.3.1
 
 dev_dependencies:
   flutter_test:

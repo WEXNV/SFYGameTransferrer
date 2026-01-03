@@ -1,4 +1,4 @@
-# 3DS FBI File Transfer
+# SFY Game Transferrer
 
 A Flutter app for transferring CIA and TIK files to Nintendo 3DS consoles using the FBI app's network receive feature.
 
